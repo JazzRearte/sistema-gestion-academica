@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alumnos y Cursos — Desafío DDS</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+  <style>
+    .alerta {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      min-width: 300px;
+      max-width: 400px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1050;
+    }
+    .badge-curso {
+      margin: 2px;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">🎓 Alumnos y Cursos</h1>
+    <button class="btn btn-primary" onclick="cargarAlumnos()">🔄 Actualizar</button>
+  </div>
+
+  <div id="alerta" class="alerta alert d-none" role="alert"></div>
+
+  <!-- Tabla de alumnos. Una vez resuelto el Desafío 1 (GET anidado),
+       la columna "Cursos" muestra los cursos en los que está inscripto cada alumno. -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-white">
+      <h2 class="h5 mb-0">Alumnos</h2>
+    </div>
+    <div class="card-body p-0">
+      <table class="table table-hover mb-0">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th><th>Nombre</th><th>Email</th><th>Cursos</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpo-alumnos">
+          <tr><td colspan="4" class="text-center text-muted py-4">Cargando...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <!-- Alta de alumno -->
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-white">
+          <h2 class="h5 mb-0">Nuevo alumno</h2>
+        </div>
+        <div class="card-body">
+          <form id="form-alumno" class="row g-3">
+            <div class="col-12">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input id="nombre" name="nombre" type="text" class="form-control" required>
+            </div>
+            <div class="col-12">
+              <label for="email" class="form-label">Email</label>
+              <input id="email" name="email" type="email" class="form-control" required>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-success">➕ Crear alumno</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inscripción — Desafío 2 (transacción) -->
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-white">
+          <h2 class="h5 mb-0">Inscribir a un curso</h2>
+        </div>
+        <div class="card-body">
+          <form id="form-inscripcion" class="row g-3">
+            <div class="col-12">
+              <label for="select-alumno" class="form-label">Alumno</label>
+              <select id="select-alumno" class="form-select" required></select>
+            </div>
+            <div class="col-12">
+              <label for="select-curso" class="form-label">Curso</label>
+              <select id="select-curso" class="form-select" required></select>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">📝 Inscribir</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="index.js"></script>
+
+</body>
+</html>
